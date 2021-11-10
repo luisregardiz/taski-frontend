@@ -1,13 +1,34 @@
+@tailwind base;
+@tailwind components;
+.input-task {
+  @apply rounded-lg border-gray-400 focus:border-gray-900 focus:ring-gray-900 dark:bg-gray-800 focus:ring-opacity-50;
+}
+
+.checkbox-task {
+  @apply rounded border-gray-300 text-gray-900 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-gray-200 focus:ring-opacity-50;
+}
+
+.btn {
+  @apply py-2  font-bold shadow-lg rounded-lg hover:bg-opacity-90 transition ease-in-out duration-150 flex items-center justify-center;
+}
+
+.input-update {
+  @apply border-0 border-b-2 border-gray-400 focus:ring-0 focus:border-gray-900 dark:bg-gray-900 dark:border-gray-600 dark:focus:border-gray-50;
+}
+
+.user-avatar {
+  @apply flex justify-center items-center uppercase w-16 h-16 text-3xl font-black bg-gray-800 text-gray-50 dark:bg-gray-100 dark:text-gray-900 rounded-2xl;
+}
+
+.user-card {
+  @apply bg-white dark:bg-gray-900 mb-5 py-5 px-10 rounded-lg shadow-md inline-flex items-center space-x-5;
+}
+@tailwind utilities;
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}

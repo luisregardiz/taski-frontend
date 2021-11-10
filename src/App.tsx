@@ -1,26 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { SWRConfig } from "swr";
+import Footer from "./components/layout/Footer";
+import Navbar from "./components/layout/Navbar";
+import Tasks from "./pages/Task";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import RequiredAuth from "./components/auth/RequiredAuth";
+import { Toaster } from "react-hot-toast";
+import SignUp from "./pages/Signup";
+import useDarkMode from "./store/darkMode";
+import { useEffect } from "react";
+const App = () => {
+    const isDark = useDarkMode((state) => state.isDark);
+    useEffect(() => {
+        if (isDark) {
+            document.documentElement.classList.add("dark");
+        } else {
+            document.documentElement.classList.remove("dark");
+        }
+    }, [isDark]);
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    return (
+        <>
+            <SWRConfig>
+                <Navbar />
+                <main className="min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-800 dark:text-gray-50 ">
+                    <Toaster position="top-left" reverseOrder={false} />
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="login" element={<Login />} />
+                        <Route path="signup" element={<SignUp />} />
+                        <Route
+                            path="dashboard"
+                            element={
+                                <RequiredAuth>
+                                    <Tasks />
+                                </RequiredAuth>
+                            }
+                        />
+                    </Routes>
+                </main>
+                <Footer />
+            </SWRConfig>
+        </>
+    );
+};
 
 export default App;
