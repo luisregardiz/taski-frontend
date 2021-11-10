@@ -1,9 +1,10 @@
+import axios from "axios";
+
 const fetcher = async (url: string, token: string) => {
     try {
-        const res = await fetch(url, {
+        const { data } = await axios.get(url, {
             headers: { Authorization: "Bearer " + token },
         });
-        const data = await res.json();
         return data;
     } catch (error) {
         console.log(error);

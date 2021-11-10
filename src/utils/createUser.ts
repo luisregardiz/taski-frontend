@@ -1,13 +1,9 @@
 import { CreateUser } from "../types/user";
-
+import axios from "axios";
 const createUser = async (url: string, user: CreateUser) => {
     try {
-        const res = await fetch(url, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(user),
-        });
-        return res.json();
+        const res = await axios.post(url, user);
+        return res;
     } catch (error) {
         console.log(error);
     }

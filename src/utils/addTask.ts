@@ -1,15 +1,13 @@
 import { TaskIn } from "../types/tasks";
+import axios from "axios";
 const addTask = async (url: string, task: TaskIn, token: string) => {
     try {
-        const res = await fetch(url, {
-            method: "POST",
+        const res = await axios.post(url, task, {
             headers: {
-                "Content-Type": "application/json",
                 Authorization: "Bearer " + token,
             },
-            body: JSON.stringify(task),
         });
-        return res.json();
+        return res;
     } catch (error) {
         console.log(error);
     }

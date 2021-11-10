@@ -4,6 +4,7 @@ import { useToken } from "../../store/token";
 import { TaskData } from "../../types/tasks";
 import fetcher from "../../utils/fetcher";
 import sortRecents from "../../utils/sortRecents";
+import Spinner from "../spinner";
 import Task from "./task";
 
 interface TaskListProps {}
@@ -15,7 +16,7 @@ const TaskList: FC<TaskListProps> = () => {
         fetcher
     );
     if (error) return <p>Sorry we have an error, try later.</p>;
-    if (!data) return <p>Loading... </p>;
+    if (!data) return <Spinner />;
     return (
         <div className="md:col-span-2 bg-white dark:bg-gray-900 p-5 rounded-lg shadow-lg space-y-5 ">
             <div>

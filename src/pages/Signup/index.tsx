@@ -13,7 +13,7 @@ const SignUp: FC<SignUpProps> = () => {
     const handleSignUp: SubmitHandler<CreateUser> = (data) => {
         createUser(`${process.env.REACT_APP_API_URL}/api/v1/users`, data)
             .then((user) => {
-                if (user.detail)
+                if (user?.status !== 200)
                     return toast.error("User has already been registered.");
                 navigate("/login");
                 toast.success("User created successfully, now login");

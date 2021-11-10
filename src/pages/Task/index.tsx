@@ -10,7 +10,7 @@ const Tasks: FC<TasksProps> = () => {
         <div>
             <section className="min-h-screen p-5">
                 <UserProfile />
-                <div className="grid md:grid-cols-3 md:grid-rows-1 grid-rows-2 grid-cols-1 grid-flow-col gap-5">
+                <div className="md:grid md:grid-cols-3 md:grid-rows-1  md:grid-flow-col md:gap-5 space-y-5 md:space-y-0">
                     <TaskForm />
                     <TaskList />
                 </div>

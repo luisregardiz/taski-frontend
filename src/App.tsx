@@ -10,6 +10,7 @@ import { Toaster } from "react-hot-toast";
 import SignUp from "./pages/Signup";
 import useDarkMode from "./store/darkMode";
 import { useEffect } from "react";
+import ErrorPage from "./pages/Error404";
 const App = () => {
     const isDark = useDarkMode((state) => state.isDark);
     useEffect(() => {
@@ -38,6 +39,7 @@ const App = () => {
                                 </RequiredAuth>
                             }
                         />
+                        <Route path="*" element={<ErrorPage />} />
                     </Routes>
                 </main>
                 <Footer />

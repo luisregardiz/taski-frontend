@@ -1,18 +1,16 @@
+import axios from "axios";
 import { UserIn } from "../types/user";
 
 const userToken = async (url: string, user: UserIn) => {
+    const userCredetial = new URLSearchParams({
+        username: user.username,
+        password: user.password,
+    });
     try {
-        const res = await fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-            },
-            body: new URLSearchParams({
-                username: user.username,
-                password: user.password,
-            }),
+        const res = await axios.post(url, userCredetial, {
+            headers: { "content-type": "application/x-www-form-urlencoded" },
         });
-        return res.json();
+        return res;
     } catch (error) {
         console.log(error);
     }

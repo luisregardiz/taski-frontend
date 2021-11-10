@@ -20,12 +20,12 @@ const Login: FC<LoginProps> = () => {
     const handleLogin: SubmitHandler<UserIn> = (data) => {
         userToken(`${process.env.REACT_APP_API_URL}/api/v1/token`, data)
             .then((res) => {
-                if (res.detail) {
+                if (res?.status !== 200) {
                     toast.error("Username or password incorrect.");
                     return;
                 }
 
-                addToken(res.access_token);
+                addToken(res.data.access_token);
                 navigate(from, { replace: true });
                 toast.success("Welcome 👋");
                 reset();
